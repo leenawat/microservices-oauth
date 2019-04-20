@@ -1,0 +1,20 @@
+version: '2.3'
+
+services:
+  mysql:
+    container_name: mysql-ms
+    hostname: mysql
+    image: mysql:5.7.19
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+    command: [--ssl=0]
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-ppassword"]
+      interval: 10s
+      timeout: 60s
+      retries: 5

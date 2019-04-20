@@ -10,10 +10,10 @@ server:
 endpoints:
   restart:
     enabled: true
-  shutdown:
-    enabled: true
-  health:
-    sensitive: false
+#  shutdown:
+#    enabled: true
+#  health:
+#    sensitive: false
 
     
 zuul:
@@ -21,13 +21,22 @@ zuul:
   routes:
     ms-got:  
       sensitiveHeaders:
-      path: /**
+##      path: /**
+      path: /ms-got/** 
+#      stripPrefix: false
       serviceId: ms-got  
     auth-server:  
       sensitiveHeaders:
-      path: /uaa/**
-      stripPrefix: false
+#      path: /uaa/*
+      path: /auth-server/**
+#      stripPrefix: false
       serviceId: auth-server
+    jhos-drug:  
+      sensitiveHeaders:
+#      path: /uaa/*
+      path: /jhos-drug/**
+#      stripPrefix: false
+      serviceId: jhos-drug
   
 eureka:
   instance:

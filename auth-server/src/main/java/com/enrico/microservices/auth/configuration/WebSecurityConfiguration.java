@@ -40,7 +40,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(
 						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and().logout().logoutUrl("/oauth/logout").logoutSuccessHandler(customLogoutSuccessHandler)
-				.and().authorizeRequests().antMatchers("/**").authenticated().and()
+				.and().authorizeRequests()
+//					.antMatchers("/**").permitAll()
+					.antMatchers("/**").authenticated()
+				.and()
 				.httpBasic();
 	}
 

@@ -1,14 +1,14 @@
 
 server: 
   port: 9093 
-  servlet: 
-    context-path: /ms-got
-  compression:
-    enabled: false
+#  servlet: 
+#    context-path: /ms-got
+#  compression:
+#    enabled: false
   
-management:
-  security:
-    enabled: false  
+#management:
+#  security:
+#    enabled: false  
 
 auth-server:
   url: http://localhost:9999
@@ -70,8 +70,8 @@ eureka:
     hostname: localhost
     port: 9091
   client:
-    registerWithEureka: true
-    fetchRegistry: false
+#    registerWithEureka: true
+#    fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
   server:
